@@ -89,7 +89,6 @@ void TxRFSync()
   for (int k = 0; k < sizeof(syncSeq) ; k++)
   {
     radio.write(low, syncSeq[k]);
-    digitalWrite(rfTxPin, syncSeq[k]) ;
     delayMicroseconds(BitPeriod) ;
   }
     radio.write(low, sizeof(low));      // Turn off transmit at end of sequence
