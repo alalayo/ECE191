@@ -29,6 +29,8 @@ int minimumRange = 0; // Minimum range needed
 long duration, distance; // Duration used to calculate distance
 long timeout = 50000;  // Ping duration timeout
 
+int received [1];
+
 void setup() {
   pinMode(syncStateA, OUTPUT) ;
   pinMode(syncStateB, OUTPUT) ;
@@ -83,7 +85,7 @@ void RxRFSync()
 
   while (!synced)
   {
-    while (digitalRead(rfRxPin) == lastBit) { } // Block until bit transition
+    while (radio.Read(received) == lastBit) { } // Block until bit transition
     int currBitTime = micros() ;
     int bitPeriod = currBitTime - lastBitTime ;
 
